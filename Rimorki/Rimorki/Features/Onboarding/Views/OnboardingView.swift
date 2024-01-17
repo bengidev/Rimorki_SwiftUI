@@ -10,6 +10,13 @@ import SwiftUI
 struct OnboardingView: View {
     @AppStorage(AppUserDefaults.hasOnboardingCompleted.rawValue) var hasCompletedOnboarding: Bool = false
     
+    @State private var blurRadius: CGFloat = 10.0
+    @State private var scale: CGFloat = 0.9
+    @State private var opacity: Double = 0.0
+    @State private var blurRadiusTwo: CGFloat = 10.0
+    @State private var scaleTwo: CGFloat = 0.9
+    @State private var opacityTwo: Double = 0.0
+    
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -57,7 +64,19 @@ struct OnboardingView: View {
                     x: geo.size.width / 2,
                     y: geo.size.height * 0.7
                 )
+                .blur(radius: blurRadiusTwo)
+                .scaleEffect(scaleTwo)
+                .opacity(opacityTwo)
                 .drawingGroup() // Raster like in UIKit
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        withAnimation(.easeInOut(duration: 0.5)) {
+                            blurRadiusTwo = 0.0
+                            scaleTwo = 1.0
+                            opacityTwo = 1.0
+                        }
+                    }
+                }
                 
                 Image(.onboarding)
                     .resizable()
@@ -72,7 +91,17 @@ struct OnboardingView: View {
                         y: geo.size.height * 0.25
                     )
                     .shadow(color: .black, radius: 5.0)
+                    .blur(radius: blurRadius)
+                    .scaleEffect(scale)
+                    .opacity(opacity)
                     .drawingGroup() // Raster like in UIKit
+                    .onAppear {
+                        withAnimation(.easeInOut(duration: 0.5)) {
+                            blurRadius = 0.0
+                            scale = 1.0
+                            opacity = 1.0
+                        }
+                    }
             }
         }
     }
