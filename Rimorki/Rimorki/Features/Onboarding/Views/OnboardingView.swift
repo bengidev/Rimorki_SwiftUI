@@ -43,7 +43,7 @@ struct OnboardingView: View {
                                 maxHeight: geo.size.height * 0.07
                             )
                             .background(
-                                Color.appSecondary,
+                                Color.appPrimary,
                                 in: RoundedRectangle(cornerRadius: 15.0)
                             )
                             .shadow(radius: 5.0)
@@ -69,7 +69,7 @@ struct OnboardingView: View {
                 .opacity(opacityTwo)
                 .drawingGroup() // Raster like in UIKit
                 .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         withAnimation(.easeInOut(duration: 0.5)) {
                             blurRadiusTwo = 0.0
                             scaleTwo = 1.0
