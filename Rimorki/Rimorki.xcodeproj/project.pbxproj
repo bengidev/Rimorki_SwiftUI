@@ -12,6 +12,7 @@
 		B660ADF32B5796B7003B663F /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660ADF22B5796B7003B663F /* InitialView.swift */; };
 		B660ADF62B579783003B663F /* AppUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660ADF52B579783003B663F /* AppUserDefaults.swift */; };
 		B660ADF82B57BD0E003B663F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660ADF72B57BD0E003B663F /* HomeView.swift */; };
+		B660ADFA2B57D208003B663F /* AppTabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660ADF92B57D208003B663F /* AppTabItemView.swift */; };
 		B6A5AFD22B56824B00B3706C /* RimorkiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A5AFD12B56824B00B3706C /* RimorkiApp.swift */; };
 		B6A5AFD62B56824E00B3706C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6A5AFD52B56824E00B3706C /* Assets.xcassets */; };
 		B6A5AFD92B56824E00B3706C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6A5AFD82B56824E00B3706C /* Preview Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		B660ADF22B5796B7003B663F /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		B660ADF52B579783003B663F /* AppUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefaults.swift; sourceTree = "<group>"; };
 		B660ADF72B57BD0E003B663F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		B660ADF92B57D208003B663F /* AppTabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabItemView.swift; sourceTree = "<group>"; };
 		B6A5AFCE2B56824B00B3706C /* Rimorki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rimorki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6A5AFD12B56824B00B3706C /* RimorkiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RimorkiApp.swift; sourceTree = "<group>"; };
 		B6A5AFD52B56824E00B3706C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				B660ADF72B57BD0E003B663F /* HomeView.swift */,
+				B660ADF92B57D208003B663F /* AppTabItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				B660ADF62B579783003B663F /* AppUserDefaults.swift in Sources */,
 				B660ADF82B57BD0E003B663F /* HomeView.swift in Sources */,
 				B6A5AFD22B56824B00B3706C /* RimorkiApp.swift in Sources */,
+				B660ADFA2B57D208003B663F /* AppTabItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
