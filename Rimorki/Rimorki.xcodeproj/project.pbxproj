@@ -118,6 +118,14 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		B660ADFB2B57D8B2003B663F /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				B6A5AFD12B56824B00B3706C /* RimorkiApp.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		B6A5AFC52B56824B00B3706C = {
 			isa = PBXGroup;
 			children = (
@@ -137,10 +145,10 @@
 		B6A5AFD02B56824B00B3706C /* Rimorki */ = {
 			isa = PBXGroup;
 			children = (
-				B660ADF42B57976F003B663F /* Shared */,
+				B660ADFB2B57D8B2003B663F /* Application */,
 				B623C8B02B5775A50081F837 /* Features */,
+				B660ADF42B57976F003B663F /* Shared */,
 				B617E05E2B575CFE00EC15FB /* Resources */,
-				B6A5AFD12B56824B00B3706C /* RimorkiApp.swift */,
 				B6A5AFD72B56824E00B3706C /* Preview Content */,
 			);
 			path = Rimorki;
