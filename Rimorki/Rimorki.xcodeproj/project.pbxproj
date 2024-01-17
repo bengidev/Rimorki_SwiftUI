@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B617E05D2B575C1000EC15FB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B617E05C2B575C1000EC15FB /* Launch Screen.storyboard */; };
-		B623C8B32B5775C10081F837 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B623C8B22B5775C10081F837 /* InitialView.swift */; };
+		B660ADED2B5794F3003B663F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660ADEC2B5794F3003B663F /* OnboardingView.swift */; };
 		B6A5AFD22B56824B00B3706C /* RimorkiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A5AFD12B56824B00B3706C /* RimorkiApp.swift */; };
 		B6A5AFD42B56824B00B3706C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A5AFD32B56824B00B3706C /* ContentView.swift */; };
 		B6A5AFD62B56824E00B3706C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6A5AFD52B56824E00B3706C /* Assets.xcassets */; };
@@ -17,7 +17,7 @@
 
 /* Begin PBXFileReference section */
 		B617E05C2B575C1000EC15FB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		B623C8B22B5775C10081F837 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		B660ADEC2B5794F3003B663F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B6A5AFCE2B56824B00B3706C /* Rimorki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rimorki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6A5AFD12B56824B00B3706C /* RimorkiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RimorkiApp.swift; sourceTree = "<group>"; };
 		B6A5AFD32B56824B00B3706C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,15 +48,23 @@
 		B623C8B02B5775A50081F837 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				B623C8B12B5775B50081F837 /* Views */,
+				B660ADEA2B5794CF003B663F /* Onboarding */,
 			);
 			path = Features;
 			sourceTree = "<group>";
 		};
-		B623C8B12B5775B50081F837 /* Views */ = {
+		B660ADEA2B5794CF003B663F /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				B623C8B22B5775C10081F837 /* InitialView.swift */,
+				B660ADEB2B5794DE003B663F /* Views */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		B660ADEB2B5794DE003B663F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B660ADEC2B5794F3003B663F /* OnboardingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,7 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B623C8B32B5775C10081F837 /* InitialView.swift in Sources */,
+				B660ADED2B5794F3003B663F /* OnboardingView.swift in Sources */,
 				B6A5AFD42B56824B00B3706C /* ContentView.swift in Sources */,
 				B6A5AFD22B56824B00B3706C /* RimorkiApp.swift in Sources */,
 			);
