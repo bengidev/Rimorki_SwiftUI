@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B617E05D2B575C1000EC15FB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B617E05C2B575C1000EC15FB /* Launch Screen.storyboard */; };
 		B6A5AFD22B56824B00B3706C /* RimorkiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A5AFD12B56824B00B3706C /* RimorkiApp.swift */; };
 		B6A5AFD42B56824B00B3706C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A5AFD32B56824B00B3706C /* ContentView.swift */; };
 		B6A5AFD62B56824E00B3706C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6A5AFD52B56824E00B3706C /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B617E05C2B575C1000EC15FB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		B6A5AFCE2B56824B00B3706C /* Rimorki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rimorki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6A5AFD12B56824B00B3706C /* RimorkiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RimorkiApp.swift; sourceTree = "<group>"; };
 		B6A5AFD32B56824B00B3706C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +34,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B617E05E2B575CFE00EC15FB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B6A5AFD52B56824E00B3706C /* Assets.xcassets */,
+				B617E05C2B575C1000EC15FB /* Launch Screen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		B6A5AFC52B56824B00B3706C = {
 			isa = PBXGroup;
 			children = (
@@ -51,9 +62,9 @@
 		B6A5AFD02B56824B00B3706C /* Rimorki */ = {
 			isa = PBXGroup;
 			children = (
+				B617E05E2B575CFE00EC15FB /* Resources */,
 				B6A5AFD12B56824B00B3706C /* RimorkiApp.swift */,
 				B6A5AFD32B56824B00B3706C /* ContentView.swift */,
-				B6A5AFD52B56824E00B3706C /* Assets.xcassets */,
 				B6A5AFD72B56824E00B3706C /* Preview Content */,
 			);
 			path = Rimorki;
@@ -125,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B617E05D2B575C1000EC15FB /* Launch Screen.storyboard in Resources */,
 				B6A5AFD92B56824E00B3706C /* Preview Assets.xcassets in Resources */,
 				B6A5AFD62B56824E00B3706C /* Assets.xcassets in Resources */,
 			);
@@ -182,7 +194,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -245,7 +257,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -278,6 +290,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -312,6 +325,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
