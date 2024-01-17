@@ -11,7 +11,7 @@ import SwiftUI
 struct RimorkiApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            InitialView()
         }
     }
 }
