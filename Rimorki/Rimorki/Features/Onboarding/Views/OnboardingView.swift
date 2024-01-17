@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @AppStorage(AppUserDefaults.hasOnboardingCompleted.rawValue) var hasCompletedOnboarding: Bool = false
+    
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -78,7 +80,9 @@ struct OnboardingView: View {
 
 private extension OnboardingView {
     private func didTapGetStarted() -> Void {
-        print("didTapGetStarted")
+        withAnimation {
+            hasCompletedOnboarding = true
+        }
     }
 }
 
