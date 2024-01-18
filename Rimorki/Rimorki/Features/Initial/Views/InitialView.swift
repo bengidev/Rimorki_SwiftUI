@@ -38,14 +38,8 @@ private extension InitialView {
     @ViewBuilder
     private func showViewBased(on hasValue: Bool) -> some View {
         if hasValue {
-            Text("Hello, World!")
+            HomeView()
                 .transition(.opacity)
-                .onTapGesture {
-                    withAnimation {
-                        print("tester")
-                        hasTempValue.toggle()
-                    }
-                }
         } else {
             OnboardingView()
                 .transition(.opacity)
