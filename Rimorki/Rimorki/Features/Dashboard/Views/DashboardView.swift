@@ -20,7 +20,7 @@ struct DashboardView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                Color.appPrimary
+                Color.appSecondary
                     .ignoresSafeArea()
                 
                 VStack {
@@ -42,7 +42,7 @@ struct DashboardView: View {
                                             .frame(maxWidth: geo.size.width * 0.25)
                                             .padding(.vertical, 5.0)
                                             .padding(.horizontal)
-                                            .shadow(radius: 10.0)
+                                            .shadow(color: .black, radius: 10.0)
                                             .drawingGroup()
                                         
                                         VStack (alignment: .leading) {
@@ -78,7 +78,7 @@ struct DashboardView: View {
                         .padding(.horizontal, 5.0)
                         .onReceive(timer) { _ in
                             withAnimation {
-                                selectedItem =  (selectedItem + 1) % 6
+                                selectedItem = (selectedItem + 1) % 6
                             }
                         }
                     }
@@ -90,10 +90,69 @@ struct DashboardView: View {
                     .background(Color.appSecondary)
                     
                     VStack {
+                        Text("Collections")
+                            .font(.system(.title, design: .rounded).bold())
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         
+                        HStack {
+                            Image(systemName: "magnifyingglass").foregroundColor(.gray)
+                            TextField("Search", text: .constant(""))
+                                .font(.system(.title3, design: .rounded))
+                            Image(systemName: "trash").foregroundColor(.gray)
+                        }
+                        .padding(.all, 10.0)
+                        .background(Color.gray.opacity(0.3))
+                        .cornerRadius(10.0)
+                        
+                        List {
+                            ForEach(1..<100) { index in
+                                HStack {
+                                    Image(.rick)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(maxWidth: geo.size.width * 0.07)
+                                        .padding(.vertical, 5.0)
+                                        .padding(.horizontal)
+                                        .shadow(color: .black, radius: 10.0)
+                                        .drawingGroup()
+                                    
+                                    VStack (alignment: .leading) {
+                                        Text("Name: Rick")
+                                            .font(.system(.headline, design: .rounded).bold())
+                                        
+                                        Text("Status: Alive")
+                                            .font(.system(.subheadline, design: .rounded))
+                                    }
+                                    
+                                    Spacer()
+                                }
+                                .frame(width: .infinity, height: geo.size.height * 0.08)
+                                .background(Color.appPrimary)
+                                .clipShape(RoundedRectangle(cornerRadius: 10.0))
+                                .listRowSeparator(.hidden)
+                                .listRowInsets(.init(top: 5.0, leading: 5.0, bottom: 5.0, trailing: 5.0))
+                                .listRowBackground(Color.gray.opacity(0.5))
+                            }
+                            .swipeActions(edge: .leading) {
+                                Button {
+                                    
+                                } label: {
+                                    Image(systemName: "star.slash")
+                                }
+                            }
+                            .swipeActions(edge: .trailing) {
+                                Button {
+                                    
+                                } label: {
+                                    Image(systemName: "trash.fill")
+                                }
+                            }
+                        }
+                        .listStyle(.plain)
+                        .clipShape(RoundedRectangle(cornerRadius: 10.0))
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .padding(.horizontal, 10.0)
+                    .frame(maxWidth: .infinity, maxHeight: geo.size.height * 0.65)
+                    .padding(.all, 10.0)
                 }
             }
         }
