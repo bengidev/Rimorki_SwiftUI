@@ -20,6 +20,7 @@
 		B6BA80032B59451200A112F9 /* CollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BA80022B59451200A112F9 /* CollectionView+Ext.swift */; };
 		B6BA80052B594D3700A112F9 /* NavigationView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BA80042B594D3700A112F9 /* NavigationView+Ext.swift */; };
 		B6BA80092B59565500A112F9 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BA80082B59565500A112F9 /* UIFont+Ext.swift */; };
+		B6BA800B2B59688300A112F9 /* KeyboardNotification+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BA800A2B59688300A112F9 /* KeyboardNotification+Ext.swift */; };
 		B6E15E802B58B9CC0007A538 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E15E7F2B58B9CC0007A538 /* DashboardView.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		B6BA80022B59451200A112F9 /* CollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView+Ext.swift"; sourceTree = "<group>"; };
 		B6BA80042B594D3700A112F9 /* NavigationView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationView+Ext.swift"; sourceTree = "<group>"; };
 		B6BA80082B59565500A112F9 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
+		B6BA800A2B59688300A112F9 /* KeyboardNotification+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardNotification+Ext.swift"; sourceTree = "<group>"; };
 		B6E15E7F2B58B9CC0007A538 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,10 +161,10 @@
 		B6A5AFD02B56824B00B3706C /* Rimorki */ = {
 			isa = PBXGroup;
 			children = (
-				B6BA80012B5944EA00A112F9 /* Extensions */,
 				B660ADFB2B57D8B2003B663F /* Application */,
 				B623C8B02B5775A50081F837 /* Features */,
 				B660ADF42B57976F003B663F /* Shared */,
+				B6BA80012B5944EA00A112F9 /* Extensions */,
 				B617E05E2B575CFE00EC15FB /* Resources */,
 				B6A5AFD72B56824E00B3706C /* Preview Content */,
 			);
@@ -213,6 +215,7 @@
 				B6BA80022B59451200A112F9 /* CollectionView+Ext.swift */,
 				B6BA80042B594D3700A112F9 /* NavigationView+Ext.swift */,
 				B6BA80082B59565500A112F9 /* UIFont+Ext.swift */,
+				B6BA800A2B59688300A112F9 /* KeyboardNotification+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				B6E15E802B58B9CC0007A538 /* DashboardView.swift in Sources */,
 				B660ADF82B57BD0E003B663F /* HomeView.swift in Sources */,
 				B6A5AFD22B56824B00B3706C /* RimorkiApp.swift in Sources */,
+				B6BA800B2B59688300A112F9 /* KeyboardNotification+Ext.swift in Sources */,
 				B6BA80032B59451200A112F9 /* CollectionView+Ext.swift in Sources */,
 				B660ADFA2B57D208003B663F /* AppTabItemView.swift in Sources */,
 			);
