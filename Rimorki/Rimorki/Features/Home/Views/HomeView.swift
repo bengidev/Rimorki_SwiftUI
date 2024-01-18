@@ -19,11 +19,11 @@ struct HomeView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            TabView(selection: .constant(1)) {
-                DashboardView().tag(1)
-                Text("Tab Content 1").tabItem { /*@START_MENU_TOKEN@*/Text("Tab Label 1")/*@END_MENU_TOKEN@*/ }.tag(2)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color.gray)
+            TabView(selection: $selectedTabCategory) {
+                DashboardView()
+                    .tag(AppTabCategory.home)
+                FavoriteView()
+                    .tag(AppTabCategory.favorite)
                 Text("Tab Content 2").tabItem { /*@START_MENU_TOKEN@*/Text("Tab Label 2")/*@END_MENU_TOKEN@*/ }.tag(3)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.gray)
@@ -61,7 +61,7 @@ struct HomeView: View {
                     withAnimation { selectedTabCategory = tabCategory }
                 }
             }
-            .padding(.all)
+            .padding(.horizontal)
             .background(Color.appSecondary)
         }
     }
