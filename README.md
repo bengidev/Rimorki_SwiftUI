@@ -10,6 +10,6 @@ This repository was intended for the purpose of storing the process history of c
 
 ## Resources 🎊
 - <a href="https://www.freepnglogos.com">freepnglogos</a>
-- 
+- <a href="https://www.freepik.com">Freepik</a>
 
 ## Demo 🖥️
