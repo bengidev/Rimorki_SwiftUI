@@ -5,27 +5,19 @@
 //  Created by Bambang Tri Rahmat Doni on 18/01/24.
 //
 
+import Combine
 import SwiftUI
 
 struct DashboardView: View {
     @Environment(\.isSearching) var isSearching: Bool
-    @State private var selectedItem: Int = 0
-    @State private var currentPage = 1
+    @State private var viewModel: DashboardViewModel = .init()
+    @State private var rickMortyCollections: [RickMortyAPIModel.Result] = []
+    @State private var selectedPage: Int = 1
     
-    private var wikiCollections: [String] = []
-    private var gridItemColumns: [GridItem] {
-        if wikiCollections.count <= 10 {
-            return [GridItem(.flexible())]
-        }
-        
-        return [
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-        ]
-    }
-    
-    private let totalPages = 20
-    private let timer = Timer.publish(every: 4.0, on: .main, in: .common).autoconnect()
+    private let gridItemColumns: [GridItem] = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+    ]
     
     var body: some View {
         GeometryReader { geo in
@@ -36,20 +28,14 @@ struct DashboardView: View {
                 NavigationView {
                     ScrollView(.vertical) {
                         LazyVGrid(columns: gridItemColumns) {
-                            ForEach(1...10, id: \.self) { item in
+                            ForEach(rickMortyCollections) { item in
                                 HStack {
-                                    Image(.rick)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .padding(.all, 5.0)
-                                        .shadow(color: .black, radius: 3.0)
-                                        .drawingGroup()
                                     
                                     VStack (alignment: .leading) {
-                                        Text("RickRickRickRickRickRick")
+                                        Text(item.name)
                                             .font(.system(.subheadline, design: .rounded).bold())
                                         
-                                        Text("Status: Alive")
+                                        Text("Status: \(item.status)")
                                             .font(.system(.footnote, design: .rounded))
                                     }
                                     
@@ -72,9 +58,19 @@ struct DashboardView: View {
                 }
                 .position(x: geo.size.width / 2, y: geo.size.height * 0.4)
                 
-                PaginationView(currentPage: $currentPage, totalPages: totalPages)
+                PaginationView(currentPage: $selectedPage, totalPages: 50)
                     .position(x: geo.size.width / 2, y: geo.size.height * 0.95)
             }
+        }
+        .animation(.easeInOut, value: viewModel.rickMortyData)
+        .onAppear {
+            viewModel.fetchRickMortyData(withPage: selectedPage)
+        }
+        .onChange(of: selectedPage) { value in
+            viewModel.fetchRickMortyData(withPage: value)
+        }
+        .onReceive(viewModel.$rickMortyData) { value in
+            rickMortyCollections = value.results
         }
     }
 }
