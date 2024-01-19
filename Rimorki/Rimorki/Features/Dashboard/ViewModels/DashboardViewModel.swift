@@ -8,15 +8,16 @@
 import Combine
 import Foundation
 
-final class DashboardViewModel: Observable {
-    @Published var collections: RickMortyAPIModel = .empty
+final class DashboardViewModel: ObservableObject {
+    @Published var rickMortyData: RickMortyAPIModel = .empty
+    @Published var rickMortyCharactersCount: Int = 0
     
     private var cancellables: Set<AnyCancellable> = []
     
     private let dataSources: RickMortyAPI = .init()
     
-    func fetchAllCharacters() -> Void {
-        dataSources.fetchAllCharacters()
+    func fetchRickMortyData(withPage page: Int = 1) -> Void {
+        dataSources.fetchAllCharacters(withPage: page)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -25,9 +26,16 @@ final class DashboardViewModel: Observable {
                 case .failure(let error):
                     print("Failure with: ", error)
                 }
-            } receiveValue: { value in
-                print("Receive Value: ", value)
+            } receiveValue: { [weak self] value in
+                guard let self else { return }
+
+                rickMortyData = value
+                rickMortyCharactersCount = rickMortyData.results.count
             }
             .store(in: &cancellables)
+    }
+    
+    func fetchAllSortedCharacters() -> [RickMortyAPIModel.Result] {
+        return rickMortyData.results.sorted { $0.name < $1.name }
     }
 }
