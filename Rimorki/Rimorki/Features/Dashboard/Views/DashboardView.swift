@@ -59,7 +59,7 @@ struct DashboardView: View {
                         //                            Text("Are you looking for \(result)?").searchCompletion(result)
                         //                        }
                     }
-                    .navigationTitle("Dashboard")
+                    .navigationTitle("Collections")
                     .background(Color.appSecondary)
                 }
                 .position(x: geo.size.width / 2, y: geo.size.height * 0.4)
