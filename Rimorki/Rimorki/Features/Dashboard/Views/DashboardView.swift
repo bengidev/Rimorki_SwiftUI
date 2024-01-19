@@ -12,12 +12,20 @@ struct DashboardView: View {
     @State private var selectedItem: Int = 0
     @State private var currentPage = 1
     
+    private var wikiCollections: [String] = []
+    private var gridItemColumns: [GridItem] {
+        if wikiCollections.count <= 10 {
+            return [GridItem(.flexible())]
+        }
+        
+        return [
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+        ]
+    }
+    
     private let totalPages = 20
     private let timer = Timer.publish(every: 4.0, on: .main, in: .common).autoconnect()
-    private let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-    ]
     
     var body: some View {
         GeometryReader { geo in
@@ -27,8 +35,8 @@ struct DashboardView: View {
                 
                 NavigationView {
                     ScrollView(.vertical) {
-                        LazyVGrid(columns: columns) {
-                            ForEach(1...20, id: \.self) { item in
+                        LazyVGrid(columns: gridItemColumns) {
+                            ForEach(1...10, id: \.self) { item in
                                 HStack {
                                     Image(.rick)
                                         .resizable()
