@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Kingfisher
 import SwiftUI
 
 struct DashboardView: View {
@@ -30,23 +31,37 @@ struct DashboardView: View {
                         LazyVGrid(columns: gridItemColumns) {
                             ForEach(rickMortyCollections) { item in
                                 HStack {
+                                    let url = URL(string: item.image)!
+                                    let processor = DownsamplingImageProcessor(size: geo.size)
+                                    |> RoundCornerImageProcessor(cornerRadius: 10.0)
                                     
+                                    KFImage.url(url)
+                                        .placeholder({ Image.init(systemName: "hourglass") })
+                                        .setProcessor(processor)
+                                        .loadDiskFileSynchronously()
+                                        .cacheMemoryOnly()
+                                        .fade(duration: 0.25)
+                                        .resizable()
+                                        .scaledToFit()
+                                        
                                     VStack (alignment: .leading) {
                                         Text(item.name)
-                                            .font(.system(.subheadline, design: .rounded).bold())
+                                            .font(.system(.footnote, design: .rounded).bold())
                                         
                                         Text("Status: \(item.status)")
-                                            .font(.system(.footnote, design: .rounded))
+                                            .font(.system(.caption, design: .rounded))
                                     }
                                     
                                     Spacer()
                                 }
-                                .frame(width: .infinity, height: geo.size.height * 0.06)
+                                .frame(maxWidth: geo.size.width, maxHeight: geo.size.height * 0.06)
                                 .background(Color.appPrimary)
                                 .clipShape(RoundedRectangle(cornerRadius: 10.0))
+                                .shadow(radius: 3.0)
                             }
                         }
                         .padding(.horizontal, 15.0)
+                        .drawingGroup()
                     }
                     .searchable(text: .constant("")) {
                         //                        ForEach(searchResults, id: \.self) { result in
@@ -69,8 +84,8 @@ struct DashboardView: View {
         .onChange(of: selectedPage) { value in
             viewModel.fetchRickMortyData(withPage: value)
         }
-        .onReceive(viewModel.$rickMortyData) { value in
-            rickMortyCollections = value.results
+        .onReceive(viewModel.$rickMortySortedCharacters) { value in
+            rickMortyCollections = value
         }
     }
 }
