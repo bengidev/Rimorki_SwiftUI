@@ -27,13 +27,13 @@ enum APIError: Error, LocalizedError {
 }
 
 final class RickMortyAPI {
-    func fetchAllCharacters() -> AnyPublisher<RickMortyAPIModel, Error> {
-        let url = URL(string: "https://rickandmortyapi.com/api/character")!
+    func fetchAllCharacters(withPage page: Int = 1) -> AnyPublisher<RickMortyAPIModel, Error> {
+        let url = URL(string: "https://rickandmortyapi.com/api/character/?page=\(page)")!
         let request = URLRequest(url: url)
         
         return URLSession.shared.dataTaskPublisher(for: request)
             .print()
-            .throttle(for: 1.0, scheduler: DispatchQueue.global(qos: .background), latest: false)
+            .throttle(for: 1.0, scheduler: DispatchQueue.global(qos: .background), latest: true)
             .tryMap { data, response -> Data in
                 guard let httpResponse = response as? HTTPURLResponse else {
                     throw APIError.unknown
