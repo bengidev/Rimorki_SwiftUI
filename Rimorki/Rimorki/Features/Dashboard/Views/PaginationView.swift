@@ -59,12 +59,12 @@ struct PaginationView: View {
             
             if currentPage < totalPages - 2 {
                 HStack {
-                    if currentPage < 17 {
+                    if currentPage < totalPages - 3 {
                         Text("...")
                     }
                     
                     Button(action: {
-                        currentPage = 20
+                        currentPage = totalPages
                     }) {
                         Text("\(totalPages)")
                             .font(.subheadline)
