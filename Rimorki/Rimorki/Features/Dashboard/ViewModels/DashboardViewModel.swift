@@ -10,7 +10,7 @@ import Foundation
 
 final class DashboardViewModel: ObservableObject {
     @Published var rickMortyData: RickMortyAPIModel = .empty
-    @Published var rickMortyCharactersCount: Int = 0
+    @Published var rickMortySortedCharacters: [RickMortyAPIModel.Result] = []
     
     private var cancellables: Set<AnyCancellable> = []
     
@@ -30,12 +30,8 @@ final class DashboardViewModel: ObservableObject {
                 guard let self else { return }
 
                 rickMortyData = value
-                rickMortyCharactersCount = rickMortyData.results.count
+                rickMortySortedCharacters = value.results.sorted { $0.name < $1.name}
             }
             .store(in: &cancellables)
-    }
-    
-    func fetchAllSortedCharacters() -> [RickMortyAPIModel.Result] {
-        return rickMortyData.results.sorted { $0.name < $1.name }
     }
 }
