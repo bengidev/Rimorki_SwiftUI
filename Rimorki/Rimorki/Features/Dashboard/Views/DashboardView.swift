@@ -15,10 +15,7 @@ struct DashboardView: View {
     @State private var rickMortyCollections: [RickMortyAPIModel.Result] = []
     @State private var selectedPage: Int = 1
     
-    private let gridItemColumns: [GridItem] = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-    ]
+    @State private var gridItemColumns: [GridItem] = []
     
     var body: some View {
         GeometryReader { geo in
@@ -31,7 +28,7 @@ struct DashboardView: View {
                         LazyVGrid(columns: gridItemColumns) {
                             ForEach(rickMortyCollections) { item in
                                 HStack {
-                                    let url = URL(string: item.image)!
+                                    let url = URL(string: "https://images.unsplash.com/photo-1705579830227-64b7df9b1b69?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNHx8fGVufDB8fHx8fA%3D%3D")!
                                     let processor = DownsamplingImageProcessor(size: geo.size)
                                     |> RoundCornerImageProcessor(cornerRadius: 10.0)
                                     
@@ -86,6 +83,17 @@ struct DashboardView: View {
         }
         .onReceive(viewModel.$rickMortySortedCharacters) { value in
             rickMortyCollections = value
+            
+            if value.count <= 10 {
+                gridItemColumns = [
+                    GridItem(.flexible()),
+                ]
+            } else {
+                gridItemColumns = [
+                    GridItem(.flexible()),
+                    GridItem(.flexible()),
+                ]
+            }
         }
     }
 }
