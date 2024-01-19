@@ -21,7 +21,7 @@ struct PaginationView: View {
                     currentPage -= 1
                 }
             }) {
-                Image(systemName: "chevron.left")
+                Image(systemName: "chevron.left").tint(Color.appPrimary)
             }
             .disabled(currentPage == 1)
             
@@ -82,7 +82,7 @@ struct PaginationView: View {
                     currentPage += 1
                 }
             }) {
-                Image(systemName: "chevron.right")
+                Image(systemName: "chevron.right").tint(Color.appPrimary)
             }
             .disabled(currentPage == totalPages)
         }
