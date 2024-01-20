@@ -5,6 +5,7 @@
 //  Created by Bambang Tri Rahmat Doni on 20/01/24.
 //
 
+import Kingfisher
 import SwiftUI
 
 struct DetailView: View {
@@ -41,14 +42,19 @@ struct DetailView: View {
                 .zIndex(1)
                 
                 VStack {
-                    Image(.rick)
+                    let url = URL(string: "https://images.unsplash.com/photo-1705579830227-64b7df9b1b69?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNHx8fGVufDB8fHx8fA%3D%3D")!
+                    let processor = DownsamplingImageProcessor(size: geo.size)
+                    |> RoundCornerImageProcessor(cornerRadius: 10.0)
+                    
+                    KFImage.url(url)
+                        .placeholder({ Image.init(systemName: "hourglass") })
+                        .setProcessor(processor)
+                        .loadDiskFileSynchronously()
+                        .cacheMemoryOnly()
+                        .fade(duration: 0.25)
                         .resizable()
-                        .scaledToFill()
-                        .frame(maxWidth: geo.size.width * 0.25, maxHeight: geo.size.height * 0.3)
-                        .padding(.vertical, 5.0)
-                        .padding(.horizontal)
                         .shadow(color: .black, radius: 10.0)
-                        .position(x: geo.size.width / 2, y: geo.size.height / 5.5)
+                        .frame(width: geo.size.width, height: geo.size.height * 0.4)
                     
                     VStack(alignment: .leading) {
                         Text("Name: \(rickMortyModel.name)")
