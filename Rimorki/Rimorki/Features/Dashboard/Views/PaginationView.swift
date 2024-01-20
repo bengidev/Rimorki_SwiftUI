@@ -31,8 +31,8 @@ struct PaginationView: View {
                         currentPage = 1
                     }) {
                         Text("\(1)")
-                            .font(.subheadline)
-                            .foregroundColor(.black)
+                            .font(.headline)
+                            .foregroundColor(Color.init(uiColor: .label))
                             .frame(width: 30, height: 30)
                             .background(Color.clear)
                             .cornerRadius(15)
@@ -49,7 +49,7 @@ struct PaginationView: View {
                     }) {
                         Text("\(page)")
                             .font(page == currentPage ? .headline : .subheadline)
-                            .foregroundColor(page == currentPage ? .appPrimary : .black)
+                            .foregroundColor(page == currentPage ? .appPrimary : Color.init(uiColor: .label))
                             .frame(width: 30, height: 30)
                             .background(page == currentPage ? Color.appPrimary.opacity(0.2) : Color.clear)
                             .cornerRadius(15)
@@ -67,8 +67,8 @@ struct PaginationView: View {
                         currentPage = totalPages
                     }) {
                         Text("\(totalPages)")
-                            .font(.subheadline)
-                            .foregroundColor(.black)
+                            .font(.headline)
+                            .foregroundColor(Color.init(uiColor: .label))
                             .frame(width: 30, height: 30)
                             .background(Color.clear)
                             .cornerRadius(15)
@@ -87,6 +87,7 @@ struct PaginationView: View {
             .disabled(currentPage == totalPages)
         }
         .animation(.easeInOut, value: currentPage)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding()
         .background(Color.appSecondary)
     }
