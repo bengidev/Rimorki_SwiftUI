@@ -9,11 +9,26 @@ import Kingfisher
 import SwiftUI
 
 struct DetailView: View {
-    let rickMortyModel: RickMortyAPIModel.Result
+    private var rickMortyModel: RickMortyAPIModel.Result
+    private var isFavoriteModel: Bool
+    private var favoriteButtonHandler: ((Bool) -> Void)?
     
     @Environment(\.dismiss) private var dismiss
+    @State private var isFavorite: Bool = false
     @State private var scale: CGFloat = 0.9
     @State private var opacity: Double = 0.0
+    
+    init(
+        rickMortyModel: RickMortyAPIModel.Result,
+        isFavoriteModel: Bool = false,
+        favoriteButtonHandler: ((Bool) -> Void)? = nil
+    ) {
+        self.rickMortyModel = rickMortyModel
+        self.isFavoriteModel = isFavoriteModel
+        self.favoriteButtonHandler = favoriteButtonHandler
+        
+        _isFavorite = .init(initialValue: isFavoriteModel)
+    }
     
     var body: some View {
         GeometryReader { geo in
@@ -23,10 +38,13 @@ struct DetailView: View {
                     .edgesIgnoringSafeArea(.all)
                     .blur(radius: 50.0)
                 
-                Button {} label: {
-                    Image(systemName: "star.fill")
+                Button {
+                    isFavorite.toggle()
+                    favoriteButtonHandler?(isFavorite)
+                } label: {
+                    Image(systemName: isFavorite ? "star.fill" : "star")
                         .font(.title.bold())
-                        .foregroundStyle(Color.yellow)
+                        .foregroundStyle(isFavorite ? Color.yellow : Color.gray)
                 }
                 .position(x: geo.size.width / 9.5, y: geo.size.height / 5.5)
                 .zIndex(1)
@@ -42,7 +60,7 @@ struct DetailView: View {
                 .zIndex(1)
                 
                 VStack {
-                    let url = URL(string: "https://images.unsplash.com/photo-1705579830227-64b7df9b1b69?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNHx8fGVufDB8fHx8fA%3D%3D")!
+                    let url = URL(string: rickMortyModel.image) ?? .init(string: "")
                     let processor = DownsamplingImageProcessor(size: geo.size)
                     |> RoundCornerImageProcessor(cornerRadius: 10.0)
                     
