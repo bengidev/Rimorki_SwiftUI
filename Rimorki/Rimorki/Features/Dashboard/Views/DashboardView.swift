@@ -16,17 +16,16 @@ struct DashboardView: View {
     @State private var selectedPage: Int = 1
     @State private var searchText = ""
     @State private var isSheetPresented = false
-    @State private var isEditing = false
     
     @State private var gridItemColumns: [GridItem] = []
     
     private var searchResults: [RickMortyAPIModel.Result] {
-            if searchText.isEmpty {
-                return rickMortyCollections
-            } else {
-                return viewModel.filterRickMortyCharacters(with: searchText)
-            }
+        if searchText.isEmpty {
+            return rickMortyCollections
+        } else {
+            return viewModel.filterRickMortyCharacters(with: searchText)
         }
+    }
     
     var body: some View {
         GeometryReader { geo in
@@ -39,7 +38,8 @@ struct DashboardView: View {
                         LazyVGrid(columns: gridItemColumns) {
                             ForEach(searchResults) { item in
                                 Button {
-                                    //
+                                    selectedRickMortyModel = item
+                                    isSheetPresented.toggle()
                                 } label: {
                                     HStack {
                                         let url = URL(string: "https://images.unsplash.com/photo-1705579830227-64b7df9b1b69?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNHx8fGVufDB8fHx8fA%3D%3D")!
@@ -79,24 +79,6 @@ struct DashboardView: View {
                     .searchable(text: $searchText)
                     .navigationTitle("Collections")
                     .background(Color.appSecondary)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button(action: {
-                                // Toggle the editing state
-                                isEditing.toggle()
-                                isSheetPresented.toggle()
-                                
-                                // Perform any other actions you need when Edit button is pressed
-                                if isEditing {
-                                    print("Edit button pressed - Entering Edit Mode")
-                                } else {
-                                    print("Edit button pressed - Exiting Edit Mode")
-                                }
-                            }) {
-                                Text(isEditing ? "Done" : "Edit")
-                            }
-                        }
-                    }
                 }
                 .position(x: geo.size.width / 2, y: geo.size.height * 0.4)
                 PaginationView(currentPage: $selectedPage, totalPages: 50)
@@ -126,7 +108,7 @@ struct DashboardView: View {
             }
         }
         .fullScreenCover(isPresented: $isSheetPresented) {
-            DetailView(rickMortyModel: .empty)
+            DetailView(rickMortyModel: selectedRickMortyModel)
         }
     }
 }
