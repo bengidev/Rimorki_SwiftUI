@@ -38,11 +38,16 @@ struct DashboardView: View {
                         LazyVGrid(columns: gridItemColumns) {
                             ForEach(searchResults) { item in
                                 Button {
-                                    selectedRickMortyModel = item
-                                    isSheetPresented.toggle()
+                                    DispatchQueue.main.async {
+                                        selectedRickMortyModel = item
+                                        
+                                        if !selectedRickMortyModel.name.isEmpty {
+                                            isSheetPresented.toggle()
+                                        }
+                                    }
                                 } label: {
                                     HStack {
-                                        let url = URL(string: "https://images.unsplash.com/photo-1705579830227-64b7df9b1b69?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNHx8fGVufDB8fHx8fA%3D%3D")!
+                                        let url = URL(string: item.image)!
                                         let processor = DownsamplingImageProcessor(size: geo.size)
                                         |> RoundCornerImageProcessor(cornerRadius: 10.0)
                                         
@@ -65,7 +70,7 @@ struct DashboardView: View {
                                         
                                         Spacer()
                                     }
-                                    .frame(maxWidth: geo.size.width, maxHeight: geo.size.height * 0.06)
+                                    .frame(maxWidth: geo.size.width, maxHeight: geo.size.height * 0.055)
                                     .background(Color.appPrimary)
                                     .clipShape(RoundedRectangle(cornerRadius: 10.0))
                                     .shadow(radius: 3.0)
@@ -81,34 +86,46 @@ struct DashboardView: View {
                     .background(Color.appSecondary)
                 }
                 .position(x: geo.size.width / 2, y: geo.size.height * 0.4)
+                
                 PaginationView(currentPage: $selectedPage, totalPages: 50)
+                    .frame(maxWidth: .infinity, maxHeight: 0)
                     .position(x: geo.size.width / 2, y: geo.size.height * 0.95)
             }
         }
         .navigationViewStyle(.stack)
         .animation(.easeInOut, value: viewModel.rickMortyData)
         .onAppear {
-            viewModel.fetchRickMortyData(withPage: selectedPage)
+            DispatchQueue.main.async {
+                viewModel.fetchRickMortyData(withPage: selectedPage)
+            }
         }
         .onChange(of: selectedPage) { value in
-            viewModel.fetchRickMortyData(withPage: value)
+            DispatchQueue.main.async {
+                viewModel.fetchRickMortyData(withPage: value)
+            }
         }
         .onReceive(viewModel.$rickMortySortedCharacters) { value in
-            rickMortyCollections = value
-            
-            if value.count <= 10 {
-                gridItemColumns = [
-                    GridItem(.flexible()),
-                ]
-            } else {
-                gridItemColumns = [
-                    GridItem(.flexible()),
-                    GridItem(.flexible()),
-                ]
+            DispatchQueue.main.async {
+                rickMortyCollections = value
+                
+                if value.count <= 10 {
+                    gridItemColumns = [
+                        GridItem(.flexible()),
+                    ]
+                } else {
+                    gridItemColumns = [
+                        GridItem(.flexible()),
+                        GridItem(.flexible()),
+                    ]
+                }
             }
         }
         .fullScreenCover(isPresented: $isSheetPresented) {
-            DetailView(rickMortyModel: selectedRickMortyModel)
+            DetailView(rickMortyModel: selectedRickMortyModel) { isFavorite in
+                DispatchQueue.main.async {
+                    viewModel.addRickMortyCharacter(selectedRickMortyModel, isFavorite: isFavorite)
+                }
+            }
         }
     }
 }
