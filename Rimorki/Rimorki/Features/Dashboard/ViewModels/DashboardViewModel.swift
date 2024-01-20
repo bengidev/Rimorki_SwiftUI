@@ -14,10 +14,11 @@ final class DashboardViewModel: ObservableObject {
     
     private var cancellables: Set<AnyCancellable> = []
     
-    private let dataSources: RickMortyAPI = .init()
+    private let dataAPI: RickMortyAPI = .init()
+    private let dataCD: RickMortyCD = .shared
     
     func fetchRickMortyData(withPage page: Int = 1) -> Void {
-        dataSources.fetchAllCharacters(withPage: page)
+        dataAPI.fetchAllCharacters(withPage: page)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -37,5 +38,9 @@ final class DashboardViewModel: ObservableObject {
     
     func filterRickMortyCharacters(with value: String) -> [RickMortyAPIModel.Result] {
         return rickMortySortedCharacters.filter { $0.name.contains(value) }
+    }
+    
+    func addRickMortyCharacter(_ rickMorty: RickMortyAPIModel.Result, isFavorite: Bool = false) -> Void {
+        dataCD.createRickMortyCD(rickMorty, isFavorite: isFavorite)
     }
 }
