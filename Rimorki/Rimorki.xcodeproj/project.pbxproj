@@ -20,6 +20,7 @@
 		B69968012B5B6CE40053F43C /* RickMortyCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69968002B5B6CE40053F43C /* RickMortyCD.swift */; };
 		B69968042B5B72D50053F43C /* RickMortyCDModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69968022B5B72D50053F43C /* RickMortyCDModel+CoreDataClass.swift */; };
 		B69968052B5B72D50053F43C /* RickMortyCDModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69968032B5B72D50053F43C /* RickMortyCDModel+CoreDataProperties.swift */; };
+		B69968082B5B8AD70053F43C /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69968072B5B8AD70053F43C /* FavoriteViewModel.swift */; };
 		B6A5AFD22B56824B00B3706C /* RimorkiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A5AFD12B56824B00B3706C /* RimorkiApp.swift */; };
 		B6A5AFD62B56824E00B3706C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6A5AFD52B56824E00B3706C /* Assets.xcassets */; };
 		B6A5AFD92B56824E00B3706C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6A5AFD82B56824E00B3706C /* Preview Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		B69968002B5B6CE40053F43C /* RickMortyCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickMortyCD.swift; sourceTree = "<group>"; };
 		B69968022B5B72D50053F43C /* RickMortyCDModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RickMortyCDModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B69968032B5B72D50053F43C /* RickMortyCDModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RickMortyCDModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B69968072B5B8AD70053F43C /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		B6A5AFCE2B56824B00B3706C /* Rimorki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rimorki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6A5AFD12B56824B00B3706C /* RimorkiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RimorkiApp.swift; sourceTree = "<group>"; };
 		B6A5AFD52B56824E00B3706C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -164,6 +166,14 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		B69968062B5B8AC10053F43C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B69968072B5B8AD70053F43C /* FavoriteViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		B6A5AFC52B56824B00B3706C = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +231,7 @@
 		B6BA7FFC2B593B3200A112F9 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
+				B69968062B5B8AC10053F43C /* ViewModels */,
 				B6BA7FFD2B593B3C00A112F9 /* Views */,
 			);
 			path = Favorite;
@@ -405,6 +416,7 @@
 				B660ADED2B5794F3003B663F /* OnboardingView.swift in Sources */,
 				B69967F72B5B6A3F0053F43C /* RickMortyCDModel.xcdatamodeld in Sources */,
 				B69967F22B5B541F0053F43C /* View+Ext.swift in Sources */,
+				B69968082B5B8AD70053F43C /* FavoriteViewModel.swift in Sources */,
 				B69967F02B5B45500053F43C /* DetailView.swift in Sources */,
 				B6BA80092B59565500A112F9 /* UIFont+Ext.swift in Sources */,
 				B660ADF32B5796B7003B663F /* InitialView.swift in Sources */,
