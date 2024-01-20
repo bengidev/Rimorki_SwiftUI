@@ -32,7 +32,6 @@ final class RickMortyAPI {
         let request = URLRequest(url: url)
         
         return URLSession.shared.dataTaskPublisher(for: request)
-            .print()
             .throttle(for: 1.0, scheduler: DispatchQueue.global(qos: .background), latest: true)
             .tryMap { data, response -> Data in
                 guard let httpResponse = response as? HTTPURLResponse else {
