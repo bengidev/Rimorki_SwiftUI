@@ -34,4 +34,8 @@ final class DashboardViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
+    
+    func filterRickMortyCharacters(with value: String) -> [RickMortyAPIModel.Result] {
+        return rickMortySortedCharacters.filter { $0.name.contains(value) }
+    }
 }
